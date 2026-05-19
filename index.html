@@ -14,29 +14,30 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif}
 body{background:radial-gradient(circle at 8% 7%,#fffaf4 0,#f8efe6 33%,#e9d5c5 100%);color:var(--ink)}
 .deck{height:100vh;width:100vw;display:grid;place-items:center;padding:36px;position:relative}
 .slide{
-  position:absolute;width:min(1640px,94vw);height:min(830px,88vh);
+  position:absolute;width:min(1640px,94vw);height:min(900px,90vh);
   border-radius:34px;background:rgba(255,251,246,.94);border:1px solid rgba(120,72,48,.14);
-  box-shadow:0 34px 90px rgba(72,38,25,.16);overflow:hidden;padding:50px 64px 96px;
+  box-shadow:0 34px 90px rgba(72,38,25,.16);overflow:hidden;
+  padding:clamp(28px,3.2vh,50px) clamp(32px,4vw,64px) clamp(24px,2.8vh,48px);
   opacity:0;transform:translateX(36px) scale(.985);transition:.55s cubic-bezier(.2,.7,.2,1);
-  pointer-events:none;z-index:0;
+  pointer-events:none;z-index:0;display:flex;flex-direction:column;
 }
 .slide.active{opacity:1;transform:translateX(0) scale(1);pointer-events:auto;z-index:5}
 .slide::before{content:"";position:absolute;inset:-18%;background:radial-gradient(circle at 14% 13%,rgba(225,135,39,.13),transparent 28%),radial-gradient(circle at 88% 10%,rgba(160,30,33,.08),transparent 32%);pointer-events:none}
-.top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:44px}
+.top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:clamp(20px,2.8vh,44px);flex-shrink:0}
 .brand{display:flex;align-items:flex-start;gap:18px;color:#514b49}
 .logo{width:112px;height:auto;display:block}
 .brand-text{font-size:15px;font-weight:850;letter-spacing:-.02em;line-height:1.15;margin-top:6px}
 .brand-text span{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);margin-top:5px}
 .counter{font-size:12px;font-weight:900;letter-spacing:.26em;color:#9a9692}
 .kicker{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--red);font-weight:900;margin-bottom:24px}
-h1{font-size:clamp(48px,5.1vw,88px);line-height:.94;letter-spacing:-.075em;font-weight:900;max-width:760px}
-.lead{font-size:21px;line-height:1.7;color:var(--muted);max-width:650px;margin-top:28px}
+h1{font-size:clamp(36px,4.2vw,78px);line-height:.94;letter-spacing:-.075em;font-weight:900;max-width:760px}
+.lead{font-size:clamp(15px,1.4vw,19px);line-height:1.65;color:var(--muted);max-width:650px;margin-top:clamp(14px,1.8vh,28px)}
 .rule{width:70px;height:3px;background:var(--orange);border-radius:99px;margin:24px 0 26px}
 /* 2-col grid used by slides 1,2,4 */
-.grid{position:relative;z-index:2;display:grid;grid-template-columns:1.03fr .97fr;gap:70px;align-items:center;height:calc(100% - 120px)}
+.grid{position:relative;z-index:2;display:grid;grid-template-columns:1.03fr .97fr;gap:clamp(32px,4vw,70px);align-items:center;flex:1;min-height:0}
 /* cards */
-.cards{display:grid;gap:22px;align-content:center}
-.info-card{min-height:114px;border:1px solid rgba(160,30,33,.16);border-radius:22px;padding:22px 24px;display:grid;grid-template-columns:54px 1fr;gap:18px;align-items:center;background:rgba(255,250,244,.56)}
+.cards{display:grid;gap:clamp(10px,1.4vh,22px);align-content:center}
+.info-card{border:1px solid rgba(160,30,33,.16);border-radius:18px;padding:clamp(14px,1.6vh,22px) 20px;display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:center;background:rgba(255,250,244,.56)}
 .icon{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:#f7eadf;color:var(--orange);font-size:24px;border:1px solid rgba(225,135,39,.16)}
 .info-card h3{font-size:17px;line-height:1.25;margin-bottom:5px;letter-spacing:-.02em}
 .info-card p{font-size:14px;line-height:1.5;color:#5e5652;font-weight:600}
@@ -55,16 +56,16 @@ h1{font-size:clamp(48px,5.1vw,88px);line-height:.94;letter-spacing:-.075em;font-
 .concept-note{font-size:11.5px;font-weight:700;color:#b0a49e;letter-spacing:.02em;margin-top:8px;font-style:italic}
 .note{margin-top:24px;display:flex;gap:14px;align-items:flex-start;background:rgba(243,232,221,.78);border-radius:16px;padding:16px 18px;max-width:680px;color:#554b47;font-size:13.5px;line-height:1.48;font-weight:700}
 /* preview grid — slides 3,5 */
-.preview-grid{position:relative;z-index:2;display:grid;grid-template-columns:.82fr 1.18fr;gap:52px;align-items:center;height:calc(100% - 112px)}
+.preview-grid{position:relative;z-index:2;display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(24px,3.2vw,52px);align-items:start;flex:1;min-height:0}
 .preview-copy h1{font-size:clamp(44px,4.2vw,72px);max-width:620px}
 .preview-copy .lead{font-size:18px;line-height:1.62;max-width:560px}
 /* carousel */
-.carousel-wrap{position:relative}
-.carousel-track{overflow:hidden;border-radius:22px}
+.carousel-wrap{position:relative;display:flex;flex-direction:column;min-height:0}
+.carousel-track{overflow:hidden;border-radius:22px;flex:1;min-height:0}
 .carousel-inner{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
 .carousel-card{min-width:100%;box-sizing:border-box}
-.carousel-img{border-radius:18px;overflow:hidden;box-shadow:0 20px 56px rgba(70,38,24,.22),0 0 0 3px rgba(225,135,39,.10);border:1px solid rgba(160,30,33,.15)}
-.carousel-img img{display:block;width:100%;height:auto}
+.carousel-img{border-radius:18px;overflow:hidden;box-shadow:0 20px 56px rgba(70,38,24,.22),0 0 0 3px rgba(225,135,39,.10);border:1px solid rgba(160,30,33,.15);max-height:calc(70vh - 160px)}
+.carousel-img img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
 .carousel-label{margin-top:10px;text-align:center}
 .carousel-label strong{display:block;font-size:13px;font-weight:800;color:#3a2e2a;letter-spacing:-.01em}
 .carousel-label span{display:block;font-size:11px;font-weight:700;color:#9a8880;margin-top:3px;letter-spacing:.03em}
@@ -121,7 +122,7 @@ h1{font-size:clamp(48px,5.1vw,88px);line-height:.94;letter-spacing:-.075em;font-
         <h1>A discovery-first proposal.</h1>
         <div class="rule"></div>
         <p class="lead">Workflow details, approval chains, and integration specs are confirmed during the Planning Phase — in structured discovery sessions with MDO's Communication Team, IT department, and departmental stakeholders.</p>
-        <div class="attachment">📎 Proposal document attached</div>
+        <div class="attachment">📎 Refer to the submitted proposal document</div>
       </div>
       <div class="deliverables">
         <div class="deliverable"><div class="icon">▦</div><div><h3>Centralised governance and auditability</h3></div></div>
